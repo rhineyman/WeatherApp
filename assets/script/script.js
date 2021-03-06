@@ -1,7 +1,4 @@
-console.log("linked");
-
-const apiKey = "3d6d91ee3b7dd01993df98095dbd1320";
-
+const cityName =document.getElementById("cityName");
 const temp = document.getElementById("temp");
 const humidity = document.getElementById("humidity");
 const windSpeed = document.getElementById("windSpeed");
@@ -10,8 +7,11 @@ const forecast = document.getElementById("forecast");
 
 const history = document.getElementById("historyItems");
 
-const url0 = "http://api.openweathermap.org/data/2.5/weather?q=";
-const url1 = "&appid="
+const apiKey = "3d6d91ee3b7dd01993df98095dbd1320";
+const cityUrl0 = "http://api.openweathermap.org/data/2.5/weather?q=";
+const cityUrl1 = "&appid=";
+const uviUrl0 = "http://api.openweathermap.org/data/2.5/uvi?lat=";
+const uviUrl1 = "&lon="
 
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click", citySearch);
@@ -20,14 +20,34 @@ searchBtn.addEventListener("click", citySearch);
 function citySearch () {
     var searchInput = document.getElementById("searchInput");
     var searchInput = searchInput.value;
-    var finalUrl = url0 + searchInput + url1 + apiKey;
+    var cityUrl = cityUrl0 + searchInput + cityUrl1 + apiKey;
     console.log(searchInput);
-    fetch(finalUrl)
-    .then(response => {
+    fetch(cityUrl)
+    .then(function (response){
         return response.json();
     })
-    .then(users => {
-        console.log(users);
+    .then(function (data){
+        document.getElementById("cityName").textContent = data.name;
+        document.getElementById("temp").textContent = "Temperature: " + data.main.temp + " K";
+        document.getElementById("humidity").textContent = "Humidity: " + data.main.humidity + "%";
+        document.getElementById("windSpeed").textContent = "Wind Speed: " + data.wind.speed + "mph";
+        var lat = data.coord.lat;
+        var lon = data.coord.lon;
+        console.log(lat, lon);
+        var uviUrl = uviUrl0 + lat + uviUrl1 + lon + cityUrl1 + apiKey;
+        fetch(uviUrl)
+        .then(function (response){
+            return response.json();
+        })
+        .then(function (uviData){
+            document.getElementById("uvIndex").textContent = "UV Index: " + uviData.value;
+
+
+            console.log(uviData);
+
+
+
+        });
     });
 }
 

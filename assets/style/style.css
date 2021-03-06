@@ -35,7 +35,10 @@ input {
     border-radius: 5px;
 }
 
-
+#cityName {
+    font-size: 38px;
+    font-weight: bold;
+}
 .container {
     display: flex;
     flex-direction: row;
@@ -96,10 +99,6 @@ input {
 }
 
 .historyItems {
-    margin-top: 20px;
-}
-
-.historyItems:nth-child() {
     margin-top: 20px;
 }
 
