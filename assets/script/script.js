@@ -14,7 +14,7 @@ const url0 = "http://api.openweathermap.org/data/2.5/weather?q=";
 const url1 = "&appid="
 
 const searchBtn = document.getElementById("searchBtn");
-// searchBtn.addEventListener("click", citySearch);
+searchBtn.addEventListener("click", citySearch);
 
 
 function citySearch () {
