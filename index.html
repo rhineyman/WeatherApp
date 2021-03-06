@@ -20,10 +20,8 @@
                 <h1>Search for a City:</h1>
             </div>
             <div class="row">
-                <input type="text" class="searchInput" placeholder="Portland">
-                <button type="submit" class="searchBtn">
-                <i class="fas fa-search"></i>
-                </button>
+                <input type="text" id="searchInput" placeholder="City">
+                <button type="button" onclick="citySearch()" class="btn btn-primary">Search</button>
             </div>
             <!-- list of previous searches -->
             <div class="historyItems"></div>
@@ -58,5 +56,7 @@
     </div>
     
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./assets/script/script.js"></script>
+
 </html>
