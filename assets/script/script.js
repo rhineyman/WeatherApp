@@ -60,8 +60,10 @@ function citySearch () {
                 for (i = 3; i < 40; i += 8) {
                     console.log(fiveUrlData.list[i]);
                     document.getElementById("date" + i).textContent = "Date: " + fiveUrlData.list[i].dt_txt.split(' ')[0];
+                    // document.getElementById("img" + i) = fiveUrlData.list[i].weather[0].icon;
                     document.getElementById("temp" + i).textContent = "Temp: " + fiveUrlData.list[i].main.temp;
                     document.getElementById("hum" + i).textContent = "Humidity: " + fiveUrlData.list[i].main.humidity;
+
                     // console.log("date" + i);
                     // console.log(fiveUrlData.list[i].main.temp);
 
@@ -79,3 +81,4 @@ function citySearch () {
     });
 }
 
+// "http://openweathermap.org/img/wn/" + iconID + "@2x.png"
