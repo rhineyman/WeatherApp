@@ -23,7 +23,8 @@ searchBtn.addEventListener("click", citySearch);
 
 var searchHis = [];
 
-function citySearch() {
+function citySearch(event) {
+    event.preventDefault();
     var searchInput = document.getElementById("searchInput");
     var searchInput = searchInput.value;
     var cityUrl = cityUrl0 + searchInput + cityUrl1 + apiKey + imperial;
