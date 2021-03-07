@@ -11,11 +11,11 @@ const history = document.getElementById("historyItems");
 
 const imperial = "&units=imperial";
 const apiKey = "3d6d91ee3b7dd01993df98095dbd1320";
-const cityUrl0 = "http://api.openweathermap.org/data/2.5/weather?q=";
+const cityUrl0 = "https://api.openweathermap.org/data/2.5/weather?q=";
 const cityUrl1 = "&appid=";
-const uviUrl0 = "http://api.openweathermap.org/data/2.5/uvi?lat=";
+const uviUrl0 = "https://api.openweathermap.org/data/2.5/uvi?lat=";
 const uviUrl1 = "&lon="
-const fiveUrl0 = "http://api.openweathermap.org/data/2.5/forecast?q=";
+const fiveUrl0 = "https://api.openweathermap.org/data/2.5/forecast?q=";
 const fiveUrl1 = "&appid="
 
 const searchBtn = document.getElementById("searchBtn");
