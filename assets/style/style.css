@@ -65,12 +65,12 @@ input {
 }
 
 
- .five-day-container h1 {
+ .fiveDayContainer h1 {
     margin-top: 25px;
     margin-left: 5%;
 }
 
-.card-row {
+.cardRow {
     display: flex;
     flex-direction: row;
 }
@@ -85,7 +85,7 @@ input {
     background-color: #3498db;
 }
 
-.five-day-container .card-text {
+.fiveDayContainer .card-text {
     margin-bottom: 15px;
     padding: 10px 30px 5px 10px;
 }

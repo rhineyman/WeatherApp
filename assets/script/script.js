@@ -4,50 +4,68 @@ const humidity = document.getElementById("humidity");
 const windSpeed = document.getElementById("windSpeed");
 const uvIndex = document.getElementById("uvIndex");
 const forecast = document.getElementById("forecast");
+const historyItems = document.getElementById("historyItems");
+const cardRow = document.getElementById("cardRow");
 
 const history = document.getElementById("historyItems");
 
+const imperial = "&units=imperial";
 const apiKey = "3d6d91ee3b7dd01993df98095dbd1320";
 const cityUrl0 = "http://api.openweathermap.org/data/2.5/weather?q=";
 const cityUrl1 = "&appid=";
 const uviUrl0 = "http://api.openweathermap.org/data/2.5/uvi?lat=";
 const uviUrl1 = "&lon="
+const fiveUrl0 = "http://api.openweathermap.org/data/2.5/forecast?q=";
+const fiveUrl1 = "&appid="
 
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click", citySearch);
 
+var searchHis = [];
 
 function citySearch () {
     var searchInput = document.getElementById("searchInput");
     var searchInput = searchInput.value;
-    var cityUrl = cityUrl0 + searchInput + cityUrl1 + apiKey;
-    console.log(searchInput);
+    var cityUrl = cityUrl0 + searchInput + cityUrl1 + apiKey + imperial;
     fetch(cityUrl)
     .then(function (response){
         return response.json();
     })
     .then(function (data){
         document.getElementById("cityName").textContent = data.name;
-        document.getElementById("temp").textContent = "Temperature: " + data.main.temp + " K";
+        document.getElementById("temp").textContent = "Temperature: " + data.main.temp + " F";
         document.getElementById("humidity").textContent = "Humidity: " + data.main.humidity + "%";
         document.getElementById("windSpeed").textContent = "Wind Speed: " + data.wind.speed + "mph";
         var lat = data.coord.lat;
         var lon = data.coord.lon;
-        console.log(lat, lon);
+        // city storage for filling history
+        var cityStore = data.name;
+        setLocal(cityStore);
+
         var uviUrl = uviUrl0 + lat + uviUrl1 + lon + cityUrl1 + apiKey;
         fetch(uviUrl)
         .then(function (response){
             return response.json();
         })
         .then(function (uviData){
-            document.getElementById("uvIndex").textContent = "UV Index: " + uviData.value;
-
-
+            document.getElementById("uvIndex").textContent = "UV Index: " + uviData.value;          
             console.log(uviData);
-
-
+            var fiveUrl = fiveUrl0 + data.name + fiveUrl1 + apiKey;
+            fetch(fiveUrl)
+            .then(function (response){
+                return response.json();            
+            })
+            .then(function (fiveUrlData){
+                console.log(fiveUrlData.list[0]);                
+                // document.getElementById("cardRow").textContent = fiveUrlData.city;
+            });          
 
         });
+      
+        function setLocal() {
+            localStorage.setItem("searchHis", JSON.stringify(searchHis)); 
+            console.log(cityStore);
+        }
     });
 }
 
