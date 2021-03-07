@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    padding: 0;
 }
 
 body {
@@ -75,7 +76,7 @@ input {
     flex-direction: row;
 }
 
-.five-day-card {
+.fiveDayCard {
     margin-left: 58.5px;
     width: 175px;
     height: auto;
@@ -90,11 +91,11 @@ input {
     padding: 10px 30px 5px 10px;
 }
 
-.five-day-card h3 {
+.fiveDayCard h3 {
     margin: 5px;
 }
 
-.five-day-card img {
+.fiveDayCard img {
     margin-left: 10%;
 }
 

@@ -49,22 +49,31 @@ function citySearch () {
         })
         .then(function (uviData){
             document.getElementById("uvIndex").textContent = "UV Index: " + uviData.value;          
-            console.log(uviData);
+            // console.log(uviData);
             var fiveUrl = fiveUrl0 + data.name + fiveUrl1 + apiKey;
             fetch(fiveUrl)
             .then(function (response){
                 return response.json();            
             })
             .then(function (fiveUrlData){
-                console.log(fiveUrlData.list[0]);                
-                // document.getElementById("cardRow").textContent = fiveUrlData.city;
+                console.log(fiveUrlData);
+                for (i = 3; i < 40; i += 8) {
+                    console.log(fiveUrlData.list[i]);
+                    document.getElementById("date" + i).textContent = "Date: " + fiveUrlData.dt;
+                    document.getElementById("temp" + i).textContent = "Temp: " + fiveUrlData.temp;
+                    document.getElementById("hum" + i).textContent = "Humidity: " + fiveUrlData.humidity;
+                    console.log("date" + i);
+
+                }
+                                
+                // document.getElementById("cardRow").textContent = fiveUrlData.list[0];
             });          
 
         });
       
         function setLocal() {
             localStorage.setItem("searchHis", JSON.stringify(searchHis)); 
-            console.log(cityStore);
+            // console.log(cityStore);
         }
     });
 }
