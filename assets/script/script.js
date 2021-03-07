@@ -59,10 +59,11 @@ function citySearch () {
                 console.log(fiveUrlData);
                 for (i = 3; i < 40; i += 8) {
                     console.log(fiveUrlData.list[i]);
-                    document.getElementById("date" + i).textContent = "Date: " + fiveUrlData.dt;
-                    document.getElementById("temp" + i).textContent = "Temp: " + fiveUrlData.temp;
-                    document.getElementById("hum" + i).textContent = "Humidity: " + fiveUrlData.humidity;
-                    console.log("date" + i);
+                    document.getElementById("date" + i).textContent = "Date: " + fiveUrlData.list[i].dt_txt;
+                    document.getElementById("temp" + i).textContent = "Temp: " + fiveUrlData.list[i].main.temp;
+                    document.getElementById("hum" + i).textContent = "Humidity: " + fiveUrlData.list[i].main.humidity;
+                    // console.log("date" + i);
+                    // console.log(fiveUrlData.list[i].main.temp);
 
                 }
                                 
