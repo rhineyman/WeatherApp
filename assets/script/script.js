@@ -42,7 +42,7 @@ function citySearch(event) {
             // city storage for filling history
             var cityStore = data.name;
             setLocal(cityStore);
-            var uviUrl = uviUrl0 + lat + uviUrl1 + lon + cityUrl1 + apiKey;
+            var uviUrl = uviUrl0 + lat + uviUrl1 + lon + cityUrl1 + apiKey + imperial;
             fetch(uviUrl)
                 .then(function (response) {
                     return response.json();
