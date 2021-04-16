@@ -50,7 +50,7 @@ function citySearch(event) {
                 .then(function (uviData) {
                     document.getElementById("uvIndex").textContent = "UV Index: " + uviData.value;
                     // console.log(uviData);
-                    var fiveUrl = fiveUrl0 + data.name + fiveUrl1 + apiKey;
+                    var fiveUrl = fiveUrl0 + data.name + fiveUrl1 + apiKey + imperial;
                     fetch(fiveUrl)
                         .then(function (response) {
                             return response.json();
